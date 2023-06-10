@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+    <div class="col justify-content-start">
+        <form>
+            <div class="col-10 mt-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>{{ header }}</h4>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </div>
+
+            <div class="col-4 mt-4">
+                <div class="mt-2">
+                    <label for="name" class="form-label">Name</label>
+                    <input class="form-control" type="text" id="name">
+                </div>
+
+                <div class="mt-2">
+                    <label for="separator" class="form-label">Column separator</label>
+                    <select class="form-select" id="separator">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+
+                <div class="mt-2">
+                    <label for="separator" class="form-label">String character</label>
+                    <select class="form-select" id="separator">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+            </div>
+
+            <h4 class="mt-4">Schema columns</h4>
+
+            <div class="row mt-4">
+                <div class="col-3">
+                    <label for="col-name" class="form-label">Column name</label>
+                    <input class="form-control" type="text" id="col-name">
+                </div>
+                <div class="col-2">
+                    <label for="col-type" class="form-label">Type</label>
+                    <select class="form-select" id="col-type">
+                        <option selected>Select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+
+                <div class="col-2">
+
+                </div>
+
+                <div class="col-3 d-flex justify-content-between align-items-end">
+                    <div>
+                        <label for="col-order" class="form-label">Order</label>
+                        <input class="form-control" type="text" id="col-order">
+                    </div>
+
+                    <a class="nav-link text-danger mb-2" href="#">Delete</a>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-3">
+                    <label for="col-name" class="form-label">Column name</label>
+                    <input class="form-control" type="text" id="col-name">
+                </div>
+                <div class="col-2">
+                    <label for="col-type" class="form-label">Type</label>
+                    <select class="form-select" id="col-type">
+                        <option selected>Select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+
+                <div class="col-2">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="col-name" class="form-label">From</label>
+                            <input class="form-control" type="text" id="from">
+                        </div>
+                        <div class="col-6">
+                            <label for="col-name" class="form-label">To</label>
+                            <input class="form-control" type="text" id="to">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 d-flex justify-content-between align-items-end">
+                    <div>
+                        <label for="col-order" class="form-label">Order</label>
+                        <input class="form-control" type="text" id="col-order">
+                    </div>
+
+                    <a class="nav-link text-danger mb-2" href="#">Delete</a>
+                </div>
+            </div>
+        </form>
+
+        <form method="post">
+            <div class="card px-2 py-4 mt-5 mb-5 col-10">
+
+
+                <div class="row">
+                    <div class="col-4">
+                        <label for="col-name" class="form-label">Column name</label>
+                        <input class="form-control" type="text" id="col-name">
+                    </div>
+                    <div class="col-4">
+                        <label for="col-type" class="form-label">Type</label>
+                        <select class="form-select" id="col-type">
+                            <option selected>Select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="col-name" class="form-label">From</label>
+                                <input class="form-control" type="text" id="from">
+                            </div>
+                            <div class="col-6">
+                                <label for="col-name" class="form-label">To</label>
+                                <input class="form-control" type="text" id="to">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="col-order" class="form-label">Order</label>
+                        <input class="form-control" type="text" id="col-order">
+                    </div>
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <button class="btn btn-primary ">Add column</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

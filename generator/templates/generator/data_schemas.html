@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-start">
+        <div class="col-8 mt-4">
+            <div class="d-flex justify-content-between">
+                <h3>Data Schemas</h3>
+                <a class="btn btn-success" href="{% url 'create_schema' %}">New Schema</a>
+            </div>
+        </div>
+        <div class="col-8 mt-4">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Modified</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for schema in schemas %}
+                    <tr>
+                        <th scope="row">{{ schema.pk }}</th>
+                        <td class="text-primary"><a class="nav-link" href="{% url 'data_sets' pk=schema.pk %}">{{ schema.name }}</a></td>
+                        <td>{{ schema.edited_at|date:'Y-m-d' }}</td>
+                        <td>
+                            <div class="d-flex col-8 justify-content-between">
+                                <a class="nav-link flex-fill text-primary" href="{{ schema.get_absolute_url }}">Edit scheme</a>
+                                <a class="nav-link flex-fill text-danger" href="{% url 'delete_schema' pk=schema.pk %}">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

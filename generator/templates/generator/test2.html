@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block body %}
+    <form method="post">{% csrf_token %}
+        <div class="col-10 mt-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>{{ form.non_form_errors }}</h4>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+
+        <div class="col-4 mt-4">
+            <div class="mt-2">
+                <label for="{{ form.name.id_for_label }}" class="form-label">Name</label>
+                {{ form.name }}
+            </div>
+
+            <div class="mt-2">
+                <label for="{{ form.column_sep.id_for_label }}" class="form-label">Column separator</label>
+                {{ form.column_sep }}
+            </div>
+
+            <div class="mt-2">
+                <label for="{{ form.string_character.id_for_label }}" class="form-label">String character</label>
+                {{ form.string_character }}
+            </div>
+        </div>
+        <h2>children</h2>
+        {% for column_form in schema_column_formset %}
+            <div class="card px-2 py-4 mt-5 mb-5 col-10">
+
+
+                <div class="row">
+                    <div class="col-4">
+                        <label for="{{ column_form.name.id_for_label }}" class="form-label">Column name</label>
+                        {{ column_form.name }}
+                    </div>
+                    <div class="col-4">
+                        <label for="{{ column_form.data_type.id_for_label }}" class="form-label">Type</label>
+                        {{ column_form.data_type }}
+                    </div>
+
+                    <div class="col-2">
+                        {#                        <div class="row">#}
+                        {#                            <div class="col-6">#}
+                        {#                                <label for="col-name" class="form-label">From</label>#}
+                        {#                                <input class="form-control" type="text" id="from">#}
+                        {#                            </div>#}
+                        {#                            <div class="col-6">#}
+                        {#                                <label for="col-name" class="form-label">To</label>#}
+                        {#                                <input class="form-control" type="text" id="to">#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                    </div>
+
+                    <div class="col-2">
+                        <label for="{{ column_form.order.id_for_label }}" class="form-label">Order</label>
+                        {{ column_form.order }}
+                    </div>
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <button class="btn btn-primary ">Add column</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

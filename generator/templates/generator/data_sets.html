@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+    <div class="col justify-content-start">
+        <div class="col-4 mt-4">
+            <div class="d-flex justify-content-between align-items-center col-9">
+                <h3>{{ schema.name }}</h3>
+                <a class="nav-link text-primary" href="{% url 'show_schema' pk=schema.pk %}">Edit schema</a>
+            </div>
+        </div>
+        <div class="col-6 mt-4">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Column name</th>
+                    <th scope="col">Column type</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for column in columns %}
+                    <tr>
+                        <th scope="row">{{ column.pk }}</th>
+                        <td>{{ column.name }}</td>
+                        <td>{{ column.data_type }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-8 mt-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3>Data Sets</h3>
+                <form class="row" method="post">
+                    {% csrf_token %}
+                    <div class="col-auto">
+                        {{ form.rows }}
+                    </div>
+
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Generate data</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-8 mt-4">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for data_set in data_sets %}
+                    <tr>
+                        <th scope="row">{{ data_set.pk }}</th>
+                        <td>{{ data_set.created|date:'Y-m-d' }}</td>
+                        <td><span class="badge bg-success">Ready</span></td>
+                        <td>
+                            <a href="{% url 'download_file' pk=data_set.pk %}" class="nav-link text-primary">Download</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+{#                <tr>#}
+{#                    <th scope="row">2</th>#}
+{#                    <td>2020-03-21</td>#}
+{#                    <td><span class="badge bg-secondary">Processing</span></td>#}
+{#                    <td>#}
+{#                        <a href="#" class="nav-link text-primary">Download</a>#}
+{#                    </td>#}
+{#                </tr>#}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+{% endblock %}
